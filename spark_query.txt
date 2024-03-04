@@ -1,0 +1,406 @@
+# open pyspark
+
+pyspark
+
+# import required
+
+from pyspark.sql import SparkSession
+import time
+
+# create session and load data from S3 bucket
+
+spark = SparkSession.builder.appName("DelayedFlightsData").getOrCreate()
+delayed_flights_data = spark.read.format("csv").option("header", "true").load("s3://airlinedelaydatademo/demoData/DelayedFlights-updated.csv")
+delayed_flights_data.createOrReplaceTempView("delayed_flights_data")
+
+
+#CarrierDelay Query
+
+#Iteration 1
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((CarrierDelay /ArrDelay)*100) As AvgCarrierDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 2
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((CarrierDelay /ArrDelay)*100) As AvgCarrierDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 3
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((CarrierDelay /ArrDelay)*100) As AvgCarrierDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 4
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((CarrierDelay /ArrDelay)*100) As AvgCarrierDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 5
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((CarrierDelay /ArrDelay)*100) As AvgCarrierDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#NASDelay Query
+
+#Iteration 1 
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((NASDelay /ArrDelay)*100) As AvgNASDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 2
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((NASDelay /ArrDelay)*100) As AvgNASDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 3
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((NASDelay /ArrDelay)*100) As AvgNASDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 4
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((NASDelay /ArrDelay)*100) As AvgNASDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 5
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((NASDelay /ArrDelay)*100) As AvgNASDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+
+
+
+#WeatherDelay Query
+
+#Iteration 1
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((WeatherDelay /ArrDelay)*100) As AvgWeatherDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 2
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((WeatherDelay /ArrDelay)*100) As AvgWeatherDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 3
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((WeatherDelay /ArrDelay)*100) As AvgWeatherDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 4
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((WeatherDelay /ArrDelay)*100) As AvgWeatherDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 5
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((WeatherDelay /ArrDelay)*100) As AvgWeatherDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+
+#LateAircraftDelay Query
+
+
+#Iteration 1
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((LateAircraftDelay /ArrDelay)*100) As AvgLateAircraftDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 2
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((LateAircraftDelay /ArrDelay)*100) As AvgLateAircraftDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 3
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((LateAircraftDelay /ArrDelay)*100) As AvgLateAircraftDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 4
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((LateAircraftDelay /ArrDelay)*100) As AvgLateAircraftDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 5
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((LateAircraftDelay /ArrDelay)*100) As AvgLateAircraftDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+
+#SecurityDelay Query
+
+#Iteration 1
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((SecurityDelay /ArrDelay)*100) As AvgSecurityDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 2
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((SecurityDelay /ArrDelay)*100) As AvgSecurityDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 3
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((SecurityDelay /ArrDelay)*100) As AvgSecurityDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 4
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((SecurityDelay /ArrDelay)*100) As AvgSecurityDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
+#Iteration 5
+
+start_time = time.time()
+
+spark.sql("""
+	SELECT Year As Year, avg((SecurityDelay /ArrDelay)*100) As AvgSecurityDelay
+	FROM delayed_flights_data
+	WHERE Year >= 2003 AND Year <= 2010
+	GROUP BY Year
+	ORDER BY Year""").show()
+
+end_time = time.time()
+run_time = end_time - start_time
+print("Query run time: ", run_time, " seconds")
+
